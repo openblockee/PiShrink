@@ -135,6 +135,7 @@ ROOT_PART=\$(df / | grep -o '/dev/[^ ]*' | sed -n 1p)
 echo "Expanding \$ROOT_PART"
 resize2fs \$ROOT_PART
 rm -f /etc/rc.local; cp -fp /etc/rc.local.bak /etc/rc.local && /etc/rc.local
+reboot
 
 EOF
   reboot
@@ -422,3 +423,4 @@ aftersize=$(ls -lh "$img" | cut -d ' ' -f 5)
 logVariables $LINENO aftersize
 
 info "Shrunk $img from $beforesize to $aftersize"
+
